@@ -1,0 +1,22 @@
+# Creation of the deployment for service
+apiVersion: apps/v1
+kind : Deployment
+metadata:
+  name: svc-deploy
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: svc-pod
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: svc-container
+          image: nginx
+  selector:
+    matchLabels:
+      app: nginx
+
+
+

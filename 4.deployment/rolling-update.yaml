@@ -1,0 +1,26 @@
+# Creation of the deployment with rolling updates
+apiVersion: apps/v1
+kind : Deployment
+metadata:
+  name: rolling-deploy
+spec:
+  replicas: 4
+  template:
+    metadata:
+      name: rolling-pod
+      labels:
+        type: rolling
+    spec:
+      containers:
+        - name: rolling-container
+          image: devopswithcloudhub/python_webpage:dockerblue
+  selector:
+    matchLabels:
+      type: rolling
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 3
+      maxUnavailable: 1
+
+

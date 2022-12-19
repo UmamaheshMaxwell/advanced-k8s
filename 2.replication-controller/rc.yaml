@@ -1,0 +1,18 @@
+# Creation of the replication controller
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: nginx-replication-controller
+spec:
+  # Creating replicas
+  replicas: 4
+  # Pod template
+  template:
+    metadata:
+      name: nginx-pod
+      labels:
+        env: test
+    spec:
+      containers:
+        - name: nginx-controller
+          image: nginx

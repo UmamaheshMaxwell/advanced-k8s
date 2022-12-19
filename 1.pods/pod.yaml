@@ -1,0 +1,9 @@
+# Creation of the pod
+apiVersion: v1
+kind:
+metadata:
+  name: nginx-pod
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx

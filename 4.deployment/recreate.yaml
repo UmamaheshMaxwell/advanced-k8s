@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recreate-deployment
+spec:
+  replicas: 4
+  template:
+    metadata:
+      name: recreate-pod
+      labels:
+        type: recreate
+    spec:
+      containers:
+        - name: recreate-container
+          image: devopswithcloudhub/python_webpage:dockerblue
+  selector:
+    matchLabels:
+      type: recreate
+  strategy:
+    type: Recreate
+

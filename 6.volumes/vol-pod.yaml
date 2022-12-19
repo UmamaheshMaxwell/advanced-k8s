@@ -1,0 +1,17 @@
+# Creating Pod with Volume
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vol-pod
+spec:
+  containers:
+    - image: busybox
+      name: busybox
+      command: ['sh','-c','echo Welcome to Volume Section !!! > /output/session.txt']
+      volumeMounts:
+        - name: my-pod-vol
+          mountPath: /output
+  volumes:
+    - name: my-pod-vol
+      hostPath:
+        path: /var/data

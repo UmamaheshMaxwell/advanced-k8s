@@ -1,0 +1,21 @@
+#Creation of the replica sets
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx-replica-set
+spec:
+  # Creating replicas
+  selector:
+    matchLabels:
+      env: prod
+  replicas: 4
+  # Pod template
+  template:
+    metadata:
+      name: nginx-pod
+      labels:
+        env: prod
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx

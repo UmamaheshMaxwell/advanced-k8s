@@ -1,0 +1,13 @@
+# Creation of service using ClusterIP
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-clusterip
+spec:
+  type: ClusterIP
+  selector:
+    app: nginx
+  ports:
+    # NodePort (Node), Port (Service), TargetPort (Container)
+    - port: 80 # Service
+      targetPort: 80 # Container
