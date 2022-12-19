@@ -3,6 +3,7 @@ kind: StorageClass
 metadata:
   name: faster-ssd
 provisioner: kubernetes.io/gce-pd
+allowVolumeExpansion: true
 parameters:
   type: pd-ssd
   fstype: ext4
