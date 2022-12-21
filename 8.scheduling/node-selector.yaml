@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind : Deployment
+metadata:
+  name: node-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      env: test
+  template:
+    metadata:
+      name: node-selector-pod
+      labels:
+        env: test
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+      nodeSelector:
+        diskType: ssd
+

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taint-deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      name: taint-pod
+      labels:
+        app: nginx
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+             - matchExpressions:
+                - key: color
+                  operator: In
+                  values:
+                    - blue
+                    - green
+      containers:
+        - name: nginx
+          image: nginx
+      tolerations:
+        - key: color
+          operator: "Equal"
+          value: blue
+#        - key: color
+#          operator: "Equal"
+#          value: green
