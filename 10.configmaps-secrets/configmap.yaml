@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  name: Uma
+  course: k8s
+  message: |
+    This is data is 
+    only valid in dev
+metadata:
+  name: data-config
+
