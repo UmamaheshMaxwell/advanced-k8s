@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: live-cmd-pod
+spec:
+  containers:
+    - name: busybox
+      image: busybox
+      command:
+        - 'sh'
+        - '-c'
+        - 'echo liveness probe testing && sleep 3600'
+      livenessProbe:
+        exec:
+          command: ["echo", "healthy"]
+        initialDelaySeconds: 5 # wait for 5 seconds before performing first probe
+        periodSeconds: 5 # probe for every 5 seconds

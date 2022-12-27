@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny
+  namespace: default
+spec:
+  podSelector: {} # all pods
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - namespaceSelector:
+           matchLabels:
+             ns: def-ns
+  egress:
+    - to:
+        - namespaceSelector:
+           matchLabels:
+              ns: def-ns
+
+    - ports: # optional
+        - port: 53
+          protocol: TCP
+        - port: 53
+          protocol: UDP
+
+

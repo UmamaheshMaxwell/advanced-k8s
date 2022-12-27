@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: big-pod
+spec:
+  containers:
+    - image: busybox
+      name: busybox
+      command:
+        - 'sh'
+        - '-c'
+        - 'Echo Resource Requests & Limits && sleep 3600'
+      resources:
+        requests:
+          memory: '128Mi'
+          cpu: '10000m' # 10cpus
